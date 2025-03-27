@@ -46,7 +46,7 @@ services:
       - backend
 
   nginx:
-    image: nginx:apline
+    image: nginx:alpine
     container_name: wellwave-nginx
     restart: always
     ports:
