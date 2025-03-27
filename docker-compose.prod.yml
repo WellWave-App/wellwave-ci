@@ -33,17 +33,17 @@ services:
     depends_on:
       - postgres
 
-  website:
-    image: wellwave-website-prod
-    container_name: wellwave-website-prod
-    restart: always
-    build:
-      context: ./wellwave-website
-      dockerfile: Dockerfile.prod
-    ports:
-      - "${FRONTEND_PORT:-8080}:8080"
-    depends_on:
-      - backend
+  # website:
+  #   image: wellwave-website-prod
+  #   container_name: wellwave-website-prod
+  #   restart: always
+  #   build:
+  #     context: ./wellwave-website
+  #     dockerfile: Dockerfile.prod
+  #   ports:
+  #     - "${FRONTEND_PORT:-8080}:8080"
+  #   depends_on:
+  #     - backend
 
   nginx:
     image: nginx:alpine
@@ -53,7 +53,7 @@ services:
       - "${NGINX_PORT:-80}:80"
     depends_on:
       - backend
-      - website
+      # - website
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d
       # - ./nginx/certbot/conf:/etc/letsencrypt
