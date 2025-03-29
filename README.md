@@ -16,8 +16,17 @@ WellWave is a comprehensive wellness application designed to help users track an
 ### 1. Clone the Repository
 
 ```sh
-git clone https://github.com/WellWave-App/wellwave-ci.git
+git clone --recurse-submodules https://github.com/WellWave-App/wellwave-ci.git 
 cd wellwave-ci
+```
+
+If you have already cloned the repository without submodules, you can initialize and update them manually:
+```sh
+git submodule update --init --recursive
+```
+or
+```sh
+git submodule update --remote --recursive
 ```
 
 ### 2. Environment Configuration
