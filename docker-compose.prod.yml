@@ -1,7 +1,7 @@
 services:
   postgres:
       image: postgres:latest
-      container_name: wellwave-postgres-prod
+      container_name: wellwave-postgres
       restart: always
       environment:
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -13,7 +13,7 @@ services:
         - postgres-data:/var/lib/postgresql/data
 
   backend:
-    image: wellwave-backend-prod
+    image: wellwave-backend
     container_name: wellwave-backend
     restart: always
     env_file:
@@ -21,8 +21,6 @@ services:
     build:
       context: ./wellwave-backend
       dockerfile: Dockerfile.prod
-      # args:
-      #   API_PORT: ${API_PORT}
     environment:
       NODE_ENV: production
       POSTGRES_HOST: ${POSTGRES_HOST}
@@ -40,8 +38,8 @@ services:
           memory: 512M
 
   website:
-    image: wellwave-website-prod
-    container_name: wellwave-website-prod
+    image: wellwave-website
+    container_name: wellwave-website
     restart: always
     build:
       context: ./wellwave-website
@@ -52,7 +50,10 @@ services:
       - backend
 
   nginx:
-    build: ./proxy
+    build: 
+      context: ./proxy
+      dockerfile: Dockerfile
+    # image: nginx:alpine
     container_name: wellwave-nginx
     restart: always
     ports:
@@ -60,8 +61,8 @@ services:
     depends_on:
       - backend
       - website
-    volumes:
-      - ./nginx/conf:/etc/nginx/conf.d
+    # volumes:
+    #   - ./nginx/conf:/etc/nginx/conf.d
       # - ./nginx/certbot/conf:/etc/letsencrypt
       # - ./nginx/certbot/www:/var/www/certbot
 
