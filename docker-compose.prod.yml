@@ -55,7 +55,6 @@ services:
     build: 
       context: ./proxy
       dockerfile: Dockerfile
-    # image: nginx:alpine
     container_name: wellwave-nginx
     restart: always
     ports:
@@ -63,10 +62,6 @@ services:
     depends_on:
       - backend
       - website
-    # volumes:
-    #   - ./nginx/conf:/etc/nginx/conf.d
-      # - ./nginx/certbot/conf:/etc/letsencrypt
-      # - ./nginx/certbot/www:/var/www/certbot
 
 volumes:
   postgres-data:
