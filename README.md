@@ -1,10 +1,8 @@
-I'll create a proper README for your WellWave project that's different from your friend's template. Let me craft something clear and specific to your project:
-
 # WellWave
 
 ![WellWave Logo](https://github.com/WellWave-App/wellwave-ci)
 
-WellWave is a comprehensive wellness application designed to help users track and improve their physical and mental wellbeing.
+WellWave is a comprehensive wellness application designed to help users track and improve their physical and mental well-being.
 
 ## Setup Instructions
 
